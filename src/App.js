@@ -15,17 +15,21 @@ function AddTodo() {
     console.log(todoTitle);
     console.log(todoDetail);
     alert('you submitted Todo item')
+    const displayTitle = document.querySelector('#todo-title').textContent = todoTitle 
+    const displayDetails = document.querySelector('#todo-detail').textContent = todoDetail
+
+
 
   }
 
   function handleTodoTitleChange(evt) {
     setTitle(evt.target.value);
-    const displayTitle = document.querySelector('#todo-title').textContent = todoTitle
+   
+    
   }
 
   function handleTodoDetailChange(evt) {
     setDetail(evt.target.value);
-    const displayDetails = document.querySelector('#todo-detail').textContent = todoDetail
 
   }
 
