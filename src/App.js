@@ -15,12 +15,16 @@ function AddTodo() {
     console.log(todoTitle);
     console.log(todoDetail);
     alert('you submitted Todo item')
+
     const displayTitle = document.querySelector('#todo-title').textContent = todoTitle 
     const displayDetails = document.querySelector('#todo-detail').textContent = todoDetail
+    
 
-
-
+    const todoList = [];
+    todoList.push(todoTitle);
+    console.log(todoList);
   }
+
 
   function handleTodoTitleChange(evt) {
     setTitle(evt.target.value);
@@ -49,12 +53,16 @@ function AddTodo() {
             <br></br>
             <button>Submit</button>
         </form>
-
+        
         <div id = "todo-title">
 
         </div>
 
         <div id = "todo-detail">
+
+        </div>
+        <div>
+
 
         </div>
     </div>
