@@ -3,6 +3,60 @@ import './App.css';
 import React from 'react'; //I imported this in here...
 //import Moment from 'react-moment';
 import * as moment from 'moment';
+//=======================================================
+
+function AddTodo() {
+
+  const [todoTitle, setTitle] = React.useState('');
+  const[todoDetail, setDetail] = React.useState('');
+
+  function handleTodo(evt) {
+    evt.preventDefault();
+    console.log(todoTitle);
+    console.log(todoDetail);
+    alert('you submitted Todo item')
+
+  }
+
+  function handleTodoTitleChange(evt) {
+    setTitle(evt.target.value);
+    const displayTitle = document.querySelector('#todo-title').textContent = todoTitle
+  }
+
+  function handleTodoDetailChange(evt) {
+    setDetail(evt.target.value);
+    const displayDetails = document.querySelector('#todo-detail').textContent = todoDetail
+
+  }
+
+
+
+
+
+  return (
+    <div>
+        Hi
+        <form onSubmit = {handleTodo}>
+            Todo:
+            <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>
+            <br></br>
+            Additional Details:
+            <input value={todoDetail} onChange = {handleTodoDetailChange} type="text"></input>
+            <br></br>
+            <button>Submit</button>
+        </form>
+
+        <div id = "todo-title">
+
+        </div>
+
+        <div id = "todo-detail">
+
+        </div>
+    </div>
+)
+}
+
 
 
 
@@ -182,6 +236,8 @@ function SetTime() {
 function App() {
   return (
     <div> Hello World
+      <AddTodo />
+      
       {/* <Button /> */}
       <SetTime />
    
