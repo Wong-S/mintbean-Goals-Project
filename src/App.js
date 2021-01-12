@@ -51,7 +51,7 @@ function AddTodo() {
 
   return (
     <div>
-        Hi
+      
         <form onSubmit = {handleTodo}>
             Todo:
             <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>
@@ -256,7 +256,7 @@ function AddTodo() {
 
 function App() {
   return (
-    <div> Hello World
+    <div> 
       <AddTodo />
       
       {/* <Button /> */}
