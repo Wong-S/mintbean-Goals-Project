@@ -4,89 +4,56 @@ import React from 'react'; //I imported this in here...
 //import Moment from 'react-moment';
 import * as moment from 'moment';
 //=======================================================
+//=======================================================
+//Search Functionality Starts Here:
+function Search() {
 
-//Edit Component:
-// function EditTodo() {
+  const [search, setSearch] = React.useState('');
 
-//   const [editTitle, setEdit] = React.useState("");
+  function handleSearch(evt) {
+    evt.preventDefault();
+    console.log(search);
+    alert('Search activated');
+  }
 
-  
-//   function handleTodo(evt) {
-//     evt.preventDefault();
-
-
-//     const todoTitleList = [];  
-//     todoTitleList.push(todoTitle);
-
-//     let elementTitle = document.createElement("p");
-//     let elementTitleDeleteButton = document.createElement("button");  //Delete Button
-//     let elementTitleEditButton = document.createElement("button");  // Edit Button
-
-//     document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitleList ;
-    
-//     //Add Delete button each time new task is added
-    
-//     //NOTE: Finally, the button gets appended to EACH "p". Use the variable name, NOT "document.queryselector("p") which creates multiple "p", but duplicated buttons inside one "p" tag
-//     elementTitle.appendChild(elementTitleDeleteButton).textContent = "Delete" ;
-//     elementTitle.appendChild(elementTitleEditButton).textContent = "Edit" ;
-    
-//     //Delete Event Listener
-//     elementTitleDeleteButton.addEventListener("click", (evt) => {
-//       evt.preventDefault();
-//       alert('Delete me');
-//       elementTitle.remove();
-//     });
-
-
-
-
-      
-
-     
-
-
-
-//     }
-
-
-
-  
-
-
-//   function handleTodoTitleChange(evt) {
-//     setTitle(evt.target.value);
+  function handleSearchChange(evt) {
+    setSearch(evt.target.value);
    
+  }
+
+
+  //Now, take the user's input and create a function to search for what they put in. Return results related/similar match
+
+  //1: create an empty array to hold the results to be later displayed
+  const searchResults = []
+
+  //2: Filter for the results and push/append to the array; use regex
+
+
+
+  return (
+  <form onSubmit={handleSearch} >
+    Search:
+    <input value= {search} onChange = {handleSearchChange} type="text"></input> 
+    {/* onChange is event listener */}
+    <button>Search</button>
+    <br></br>
+
     
-//   }
-
-
-//   return (
-//     <div>
-      
-//         <form onSubmit = {handleEdit}>
-//             Todo:
-//             <input value={editTitle} onChange = {handleTodoEditChange} type="text"></input>
-//             <button>Update Item</button>
-//             <br></br>
-
-            
-//         </form>
-        
-//     </div>
-// )
-// };
+</form>)
+}
 
 
 
-/////////////////////////////////////
-
-
+//=======================================================
+//=======================================================
+//Goal Track App Tasks Start Here:
+const todoTitleList = [];  //Global variable...
 
 function AddTodo() {
 
   const [todoTitle, setTitle] = React.useState("");
   // const[todoDetail, setDetail] = React.useState("");
-
   
   function handleTodo(evt) {
     evt.preventDefault();
@@ -98,9 +65,9 @@ function AddTodo() {
     // const displayDetails = document.querySelector('#todo-detail').textContent = todoDetail
     
 
-    const todoTitleList = [];  
+    // const todoTitleList = [];  
     todoTitleList.push(todoTitle);
-    //console.log(todoList);
+    console.log(todoTitleList);
 
     //NOTE: Create a new element and append the todoTitle and todoDetails.
 
@@ -108,7 +75,7 @@ function AddTodo() {
     let elementTitleDeleteButton = document.createElement("button");  //Delete Button
     let elementTitleEditButton = document.createElement("button");  // Edit Button
 
-    document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitleList ;
+    document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitle;
     
     //Add Delete button each time new task is added
     
@@ -176,27 +143,14 @@ function AddTodo() {
         elementTitle.appendChild(elementTitleDeleteButton).textContent = "Delete" ;
         elementTitle.appendChild(elementTitleEditButton).textContent = "Edit" ;
         
-
+        console.log(todoTitleList)
 
       })
-
-      
-  
    
-
-
-      
-
-     
     });
 
 
     }
-
-
-
-  
-
 
   function handleTodoTitleChange(evt) {
     setTitle(evt.target.value);
@@ -237,14 +191,19 @@ function AddTodo() {
 
 
 
-
 function App() {
   return (
     <div> 
+      <Search />
+      <br></br>
       <AddTodo />
-      
-   
+
+
     </div>
+
+
+
+
   );
 }
 
