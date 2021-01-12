@@ -60,7 +60,23 @@ function AddTodo() {
   //   window.localStorage.setItem('todoTitleList', todoTitleList), [todoTitleList];
   //   return { todoTitleList };
   // });
+  // React.useEffect(() => {
+  //   function checkTodoData() {
+  //     const item = localStorage.getItem('todoTitle')
+  
+  //     if (item) {
+  //       setTitle(item)
+  //     }
+  //   }
+  
+  //   window.addEventListener('storage', checkTodoData)
+  
+  //   return () => {
+  //     window.removeEventListener('storage', checkTodoData)
+  //   }
+  // }, [])
 
+  
   function handleTodo(evt) {
     evt.preventDefault();
     console.log(todoTitle);
@@ -95,8 +111,17 @@ function AddTodo() {
       evt.preventDefault();
       alert('Delete me');
       elementTitle.remove();
-    });
 
+        // not sure why this conditional isn't working to update
+        // the todoTitleList??
+      for( let i = 0; i < todoTitleList.length; i++){ 
+    
+        if ( todoTitleList[i] === elementTitle) { 
+           todoTitleList.splice(i, 1);
+        }
+    }
+    });
+ 
 
     //NOTE: Edit functionality start here====================
     elementTitleEditButton.addEventListener("click", (evt) => {
@@ -139,6 +164,9 @@ function AddTodo() {
         alert('update me?');
         let newEditText = document.getElementById("editText").value; //Gets the value from the input Id
         console.log(newEditText);
+        
+
+
 
         //Now replace the newly inputed text by user into the todo
 
@@ -192,10 +220,6 @@ function AddTodo() {
     </div>
 )
 }
-
-
-
-
 
 
 function App() {
