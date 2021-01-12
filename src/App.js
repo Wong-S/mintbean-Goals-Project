@@ -26,12 +26,41 @@ function AddTodo() {
     //console.log(todoList);
 
     //NOTE: Create a new element and append the todoTitle and todoDetails. 
-    let elementTitle = document.createElement("p");
-    document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitleList;
-    // document.getElementById("").textContent = todoList;
-    // document.querySelector(p).textContent;
 
-  }
+    const deleteTodo = () => {
+      elementTitle.classList.remove(elementTitle)
+      alert( 'deleted todo item')
+    }
+
+    let elementTitle = document.createElement("p");
+    let elementTitleDeleteButton = document.createElement("button");
+
+    document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitleList ;
+    
+    //Add Delete button each time new task is added
+    
+    //NOTE: Finally, the button gets appended to EACH "p". Use the variable name, NOT "document.queryselector("p") which creates multiple "p", but duplicated buttons inside one "p" tag
+    elementTitle.appendChild(elementTitleDeleteButton).textContent = "Delete" ;
+    
+    elementTitleDeleteButton.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      alert('You clicekd me');
+      elementTitle.remove();
+    });
+    // const deleteTodo = () => {
+    //   elementTitle.classList.remove("p")
+    // }
+
+    //When the user clicks on delete button, the DOM task element gets removed 
+    // function deleteTodo() {
+    //   document.querySelector("button").addEventListener("click", ()) => {
+    //     alert('delete me!')
+    //   }
+    }
+
+
+
+  
 
 
   function handleTodoTitleChange(evt) {
@@ -44,10 +73,6 @@ function AddTodo() {
   //   setDetail(evt.target.value);
 
   // }
-
-
-
-
 
   return (
     <div>
@@ -63,9 +88,12 @@ function AddTodo() {
             
         </form>
         
-        <div id = "todo-title">
+        <form>
+          <div id = "todo-title">
 
-        </div>
+          
+          </div>
+        </form>
 
         {/* <div id = "todo-detail">
 
