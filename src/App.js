@@ -48,13 +48,19 @@ function Search() {
 //=======================================================
 //=======================================================
 //Goal Track App Tasks Start Here:
-const todoTitleList = [];  //Global variable...
+const todoTitleList = [];  //Global variable..
 
 function AddTodo() {
 
   const [todoTitle, setTitle] = React.useState("");
-  // const[todoDetail, setDetail] = React.useState("");
-  
+
+  // Trying to save the data when the page refreshes
+  // ===========================================
+  // React.useEffect(() => {
+  //   window.localStorage.setItem('todoTitleList', todoTitleList), [todoTitleList];
+  //   return { todoTitleList };
+  // });
+
   function handleTodo(evt) {
     evt.preventDefault();
     console.log(todoTitle);
@@ -77,6 +83,7 @@ function AddTodo() {
 
     document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitle;
     
+
     //Add Delete button each time new task is added
     
     //NOTE: Finally, the button gets appended to EACH "p". Use the variable name, NOT "document.queryselector("p") which creates multiple "p", but duplicated buttons inside one "p" tag
