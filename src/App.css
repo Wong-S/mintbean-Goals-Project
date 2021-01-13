@@ -17,3 +17,11 @@ button {
   font-family:'Trebuchet MS';
   font-size:15px;
 }
+
+.icon {
+  font-size: 12px;;
+}
+
+.checklistlogo {
+  background-image: url(images/checklist.png);
+}
