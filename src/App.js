@@ -224,7 +224,7 @@ function App() {
   return (
     <div> 
 
-      <div class="checklistlogo"></div>
+      {/* <div class="checklistlogo"></div> */}
       <div class="icon">Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       <br></br>
       <Search />
