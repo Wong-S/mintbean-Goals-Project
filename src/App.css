@@ -10,12 +10,12 @@ body {
 button {
   border-radius: 12px;
   border: 10px;
-  width:90px;
-  height: 40px;
-  background-color:darksalmon;
+  width: 80px;
+  height: 30px;
+  background-color:lightsteelblue;
   color: white;
   font-family:'Trebuchet MS';
-  font-size:15px;
+  font-size:13px;
 }
 
 .icon {
