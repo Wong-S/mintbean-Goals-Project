@@ -34,9 +34,8 @@ function Search() {
   return (
   <form onSubmit={handleSearch} >
     Search:
-    <input value= {search} onChange = {handleSearchChange} type="text"></input> 
+    <input value= {search} onChange = {handleSearchChange} type="text"></input> <button>Search</button>
     {/* onChange is event listener */}
-    <button>Search</button>
     <br></br>
 
     
@@ -199,8 +198,7 @@ function AddTodo() {
       
         <form onSubmit = {handleTodo}>
             Todo:
-            <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>
-            <button>Add Item</button>
+            <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>  <button>Add Item</button>
             <br></br>
 
             
@@ -225,6 +223,7 @@ function AddTodo() {
 function App() {
   return (
     <div> 
+      <br></br>
       <Search />
       <br></br>
       <AddTodo />
