@@ -230,10 +230,12 @@ function App() {
   return (
     <div> 
     
-  
-      <AddTodo />
-      <br></br>
       <Search />
+      <br></br>
+
+      <AddTodo />
+
+      
 
 
     </div>
