@@ -5,53 +5,17 @@ import React from 'react'; //I imported this in here...
 import * as moment from 'moment';
 //=======================================================
 //=======================================================
-//Search Functionality Starts Here:
-function Search() {
-
-  const [search, setSearch] = React.useState('');
-
-  function handleSearch(evt) {
-    evt.preventDefault();
-    console.log(search);
-    alert('Search activated');
-  }
-
-  function handleSearchChange(evt) {
-    setSearch(evt.target.value);
-   
-  }
-
-
-  //Now, take the user's input and create a function to search for what they put in. Return results related/similar match
-
-  //1: create an empty array to hold the results to be later displayed
-  const searchResults = []
-
-  //2: Filter for the results and push/append to the array; use regex
-
-
-
-  return (
-  <form onSubmit={handleSearch} >
-    Search:
-    <input value= {search} onChange = {handleSearchChange} type="text"></input> <button>Search</button>
-    {/* onChange is event listener */}
-    <br></br>
-
-    
-</form>)
-}
-
-
 
 //=======================================================
 //=======================================================
 //Goal Track App Tasks Start Here:
-const todoTitleList = [];  //Global variable..
+const todoTitleList = [];  //Global variable...
 
 function AddTodo() {
 
   const [todoTitle, setTitle] = React.useState("");
+  // const[todoDetail, setDetail] = React.useState("");
+
 
   // Trying to save the data when the page refreshes
   // ===========================================
@@ -74,7 +38,6 @@ function AddTodo() {
   //     window.removeEventListener('storage', checkTodoData)
   //   }
   // }, [])
-
   
   function handleTodo(evt) {
     evt.preventDefault();
@@ -98,7 +61,6 @@ function AddTodo() {
 
     document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitle;
     
-
     //Add Delete button each time new task is added
     
     //NOTE: Finally, the button gets appended to EACH "p". Use the variable name, NOT "document.queryselector("p") which creates multiple "p", but duplicated buttons inside one "p" tag
@@ -110,17 +72,18 @@ function AddTodo() {
       evt.preventDefault();
       alert('Delete me');
       elementTitle.remove();
+   
 
         // not sure why this conditional isn't working to update
         // the todoTitleList??
-      for( let i = 0; i < todoTitleList.length; i++){ 
+
+        for( let i = 0; i < todoTitleList.length; i++){ 
     
-        if ( todoTitleList[i] === elementTitle) { 
-           todoTitleList.splice(i, 1);
-        }
-    }
-    });
- 
+          if ( todoTitleList[i] === elementTitle) { 
+             todoTitleList.splice(i, 1);
+          }
+      }
+      });
 
     //NOTE: Edit functionality start here====================
     elementTitleEditButton.addEventListener("click", (evt) => {
@@ -163,9 +126,6 @@ function AddTodo() {
         alert('update me?');
         let newEditText = document.getElementById("editText").value; //Gets the value from the input Id
         console.log(newEditText);
-        
-
-
 
         //Now replace the newly inputed text by user into the todo
 
@@ -198,7 +158,8 @@ function AddTodo() {
       
         <form onSubmit = {handleTodo}>
             Todo:
-            <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>  <button>Add Item</button>
+            <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>
+            <button>Add Item</button>
             <br></br>
 
             
@@ -219,26 +180,68 @@ function AddTodo() {
 )
 }
 
+///=========================================
+///=========================================
+
+//Search Functionality Starts Here:
+function Search() {
+
+  const [search, setSearch] = React.useState('');
+
+  function handleSearch(evt) {
+    evt.preventDefault();
+    console.log(search);
+    alert('Search activated');
+  }
+
+  function handleSearchChange(evt) {
+    setSearch(evt.target.value);
+   
+  }
+
+
+  //Now, take the user's input and create a function to search for what they put in. Return results related/similar match
+
+  //1: create an empty array to hold the results to be later displayed
+  const searchResults = []
+
+  //2: Filter for the results and push/append to the array; use regex
+
+
+
+  return (
+  <form onSubmit={handleSearch} >
+    Search:
+    <input value= {search} onChange = {handleSearchChange} type="text"></input> 
+    {/* onChange is event listener */}
+    <button>Search</button>
+    <br></br>
+
+    
+</form>)
+}
+
+///=========================================
+///=========================================
+
+
 
 function App() {
   return (
     <div> 
-
-      {/* <div class="checklistlogo"></div> */}
-      <div class="icon">Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    
+  
+      <AddTodo />
       <br></br>
       <Search />
-      <br></br>
-      <AddTodo />
+
 
     </div>
-    
 
 
 
 
   );
 }
-
 
 export default App;
