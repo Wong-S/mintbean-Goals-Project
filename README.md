@@ -6,6 +6,7 @@
 - [Tech Stack](#tech-stack)
 - [Features](#features)
 - [About the Developers](#developer)
+- [Getting Started with Create React App](#create-react-app)
 
 ## <a name="overview"></a>Overview
 
