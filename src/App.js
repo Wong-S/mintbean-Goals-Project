@@ -5,11 +5,12 @@ import React from 'react'; //I imported this in here...
 import * as moment from 'moment';
 //=======================================================
 //=======================================================
-
+//GLOBAL VARIABLES:
+const todoTitleList = [];  //Global variable...
 //=======================================================
 //=======================================================
 //Goal Track App Tasks Start Here:
-const todoTitleList = [];  //Global variable...
+
 
 function AddTodo() {
 
@@ -192,7 +193,74 @@ function Search() {
     evt.preventDefault();
     console.log(search);
     alert('Search activated');
-  }
+  
+
+
+  //Now, take the user's input and create a function to search for what they put in. Return results related/similar match
+    function searchResultFeedback() {
+      //1: create an empty array to hold the results to be later displayed
+      const searchResults = []
+    
+      //2: Filter for the results and push/append to the array; use regex
+      const hashtagSearch = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,30})(\b|\r)/g 
+      const searchString = search 
+    
+      //if the searchString is in the todoTitleList then push those results in the searchResults list
+      for (let i = 0; i < todoTitleList.length; i ++ ) {
+        if (todoTitleList[i] === searchString) {
+          searchResults.push(todoTitleList[i]);
+        }
+      }
+    
+      console.log('the length should be')
+      console.log(searchResults);
+      console.log(searchResults.length); //how many items in array
+      let searchResultLength = searchResults.length;
+    
+      //now display searchResults back to user ; Add elements to form in DOM
+      let elementForm = document.querySelector("#search-form");
+    
+      let elementDiv = document.createElement("div");
+      elementDiv.classList.add("search-result");
+    
+      let elementButtonEdit = document.createElement("button");
+      elementButtonEdit.setAttribute("id", "edit-btn");
+    
+      let elementButtonDelete = document.createElement("button");
+      elementButtonDelete.setAttribute("id", "delete-btn");
+    
+      //Iterate through the searchResults.
+      for (let i = 0; i < searchResultLength; i ++) {
+        console.log(searchResults[i]);
+        console.log('for looop execute')
+
+        let elementForm = document.querySelector("#search-form");
+    
+        let elementDiv = document.createElement("div");
+        elementDiv.classList.add("search-result");
+      
+        let elementButtonEdit = document.createElement("button");
+        elementButtonEdit.setAttribute("id", "edit-btn");
+      
+        let elementButtonDelete = document.createElement("button");
+        elementButtonDelete.setAttribute("id", "delete-btn");
+      
+        elementForm.appendChild(elementDiv).textContent = searchResults[i]
+        elementDiv.appendChild(elementButtonEdit).textContent = "Delete" ;
+        elementDiv.appendChild(elementButtonDelete).textContent = "Edit" ;
+      // let myClass = document.getElementsByClassName('search-result'),
+      // myClassParent = myClass[0].parentNode
+
+      // while ()
+      };
+    
+    };
+    searchResultFeedback() //function call 
+    
+      
+    }
+  
+  
 
   function handleSearchChange(evt) {
     setSearch(evt.target.value);
@@ -200,17 +268,10 @@ function Search() {
   }
 
 
-  //Now, take the user's input and create a function to search for what they put in. Return results related/similar match
-
-  //1: create an empty array to hold the results to be later displayed
-  const searchResults = []
-
-  //2: Filter for the results and push/append to the array; use regex
-
 
 
   return (
-  <form onSubmit={handleSearch} >
+  <form id = "search-form" onSubmit={handleSearch} >
     Search:
     <input value= {search} onChange = {handleSearchChange} type="text"></input> 
     {/* onChange is event listener */}
@@ -218,7 +279,7 @@ function Search() {
     <br></br>
 
     
-</form>)
+  </form>)
 }
 
 ///=========================================
