@@ -223,27 +223,6 @@ function Search() {
       const stringArrayCharLength = stringArrayChar.length;
       console.log('The array length is', stringArrayCharLength); // 3 (from example above)
 
-   
-
-
-
-//       string_word_char = ["#","h","i"]
-// print(len(string_word_char))
-// string_char_length = len(string_word_char)
-// count_match = 0
-// lst = ["#hi", "I am looking for #hi", "friend", "since you #hi I love you", "what say #hi"]
-
-// for word in lst:
-//     count_match = 0
-//     for char in word:
-//         if count_match < string_char_length and char in string_word_char:
-//             count_match += 1
-
-//             if count_match == string_char_length:
-//                 print(word)
-
-//         else:
-//             print("no match found")
     
       const finalSearchResults = []
       //if the searchString is in the todoTitleList then push those results in the searchResults list
