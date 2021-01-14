@@ -205,7 +205,47 @@ function Search() {
       //2: Filter for the results and push/append to the array; use regex
       const hashtagSearch = /(^|\B)#(?![0-9_]+\b)([a-zA-Z0-9_]{1,30})(\b|\r)/g 
       const searchString = search 
+
+      //TESTING REGEX HERE BOOLEAN:
+      const stringArray = searchString.match(hashtagSearch);
+      console.log(stringArray)
+      console.log('do they match?')
+
+
+      //Split the user searched word into individual chars in a list:
+      let stringArrayChar = []
+      for (let i = 0; i < searchString.length; i ++ ) {
+        stringArrayChar.push(searchString[i])
+      }
+
+      console.log('the new array of char is', stringArrayChar) // from "hi" to --> [#, h, i]
+
+      const stringArrayCharLength = stringArrayChar.length;
+      console.log('The array length is', stringArrayCharLength); // 3 (from example above)
+
+   
+
+
+
+//       string_word_char = ["#","h","i"]
+// print(len(string_word_char))
+// string_char_length = len(string_word_char)
+// count_match = 0
+// lst = ["#hi", "I am looking for #hi", "friend", "since you #hi I love you", "what say #hi"]
+
+// for word in lst:
+//     count_match = 0
+//     for char in word:
+//         if count_match < string_char_length and char in string_word_char:
+//             count_match += 1
+
+//             if count_match == string_char_length:
+//                 print(word)
+
+//         else:
+//             print("no match found")
     
+      const finalSearchResults = []
       //if the searchString is in the todoTitleList then push those results in the searchResults list
       for (let i = 0; i < todoTitleList.length; i ++ ) {
         if (todoTitleList[i] === searchString) {
@@ -216,7 +256,44 @@ function Search() {
       console.log('the length should be')
       console.log(searchResults);
       console.log(searchResults.length); //how many items in array
-      let searchResultLength = searchResults.length;
+
+            //Now iterate and count the matches. If it's the same as the length, return the search result
+      for (let i = 0; i < todoTitleList.length; i ++) {
+        console.log('FOR LOOP');
+        console.log(' FOR LOOP HERE', todoTitleList[i]); 
+        let countMatch = 0
+
+        for(let char in todoTitleList[i]) {
+          console.log(todoTitleList[i][char]); //This is printing --> #, h, i ; each char of the word is getting iterated over
+          let eachChar = todoTitleList[i][char]
+
+          if (countMatch < stringArrayCharLength && stringArrayChar.includes(eachChar) === true ) {
+            console.log('YES')
+            countMatch ++
+
+            //nested if statement:
+            if (countMatch === stringArrayCharLength) {
+              console.log('THE SEARCH RESULT IS')
+              console.log(todoTitleList[i]);
+              finalSearchResults.push(todoTitleList[i])
+            }
+          }
+
+          else {
+            console.log('no match found')
+          }
+
+        
+        }
+
+        // for(let char in i ) {
+        //   console.log('the char is', char)
+        // }
+      }
+
+
+
+      let searchResultLength = finalSearchResults.length;
     
       //now display searchResults back to user ; Add elements to form in DOM
       let elementForm = document.querySelector("#search-form");
@@ -232,7 +309,7 @@ function Search() {
     
       //Iterate through the searchResults.
       for (let i = 0; i < searchResultLength; i ++) {
-        console.log(searchResults[i]);
+        console.log(finalSearchResults[i]);
         console.log('for looop execute')
 
         //NOTE: Needed to create and assign a new variable eachtime. Cannot do it before or else only one div element gets created and shows up in the DOM
@@ -247,7 +324,7 @@ function Search() {
         let elementButtonDelete = document.createElement("button");
         elementButtonDelete.setAttribute("id", "delete-btn");
       
-        elementForm.appendChild(elementDiv).textContent = searchResults[i]
+        elementForm.appendChild(elementDiv).textContent = finalSearchResults[i]
         elementDiv.appendChild(elementButtonDelete).textContent = "Delete" ;
         elementDiv.appendChild(elementButtonEdit).textContent = "Edit" ;
 
