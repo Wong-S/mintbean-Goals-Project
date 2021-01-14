@@ -69,6 +69,7 @@ function AddTodo() {
     elementTitle.appendChild(elementTitleEditButton).textContent = "Edit" ;
     
     //Delete Event Listener
+  
     elementTitleDeleteButton.addEventListener("click", (evt) => {
       evt.preventDefault();
       alert('Delete me');
@@ -234,6 +235,7 @@ function Search() {
         console.log(searchResults[i]);
         console.log('for looop execute')
 
+        //NOTE: Needed to create and assign a new variable eachtime. Cannot do it before or else only one div element gets created and shows up in the DOM
         let elementForm = document.querySelector("#search-form");
     
         let elementDiv = document.createElement("div");
@@ -246,12 +248,84 @@ function Search() {
         elementButtonDelete.setAttribute("id", "delete-btn");
       
         elementForm.appendChild(elementDiv).textContent = searchResults[i]
-        elementDiv.appendChild(elementButtonEdit).textContent = "Delete" ;
-        elementDiv.appendChild(elementButtonDelete).textContent = "Edit" ;
-      // let myClass = document.getElementsByClassName('search-result'),
-      // myClassParent = myClass[0].parentNode
+        elementDiv.appendChild(elementButtonDelete).textContent = "Delete" ;
+        elementDiv.appendChild(elementButtonEdit).textContent = "Edit" ;
 
-      // while ()
+        elementButtonDelete.addEventListener("click", (evt) => {
+          evt.preventDefault();
+          alert('Delete me');
+          elementDiv.remove();
+       
+    
+            // not sure why this conditional isn't working to update
+            // the todoTitleList??
+    
+            // for( let i = 0; i < todoTitleList.length; i++){ 
+        
+            //   if ( todoTitleList[i] === elementTitle) { 
+                //  todoTitleList.splice(i, 1);
+            //   }
+          
+          });
+    
+        //NOTE: Edit functionality start here====================
+        elementButtonEdit.addEventListener("click", (evt) => {
+          evt.preventDefault();
+          alert('Edit me');
+    
+          //Create another form for input. Take that input and replace the current DOM element inner text. 
+          let elementForm = document.createElement("form");
+          // elementForm.setAttribute("onSubmit", {handleEdit})
+          // elementForm.setAttribute("onChange", {handleEditChange})
+    
+          let elementEditButton = document.createElement("button");
+          
+          let elementInput = document.createElement("input");
+          elementInput.setAttribute("type", "text");
+          elementInput.setAttribute("value", "");
+          elementInput.setAttribute("id", "editText");
+    
+     
+          //Creating another input and update button option for user
+
+          elementDiv.appendChild(elementForm);
+          elementForm.appendChild(elementInput);
+          elementForm.appendChild(elementEditButton);
+          
+          elementEditButton.textContent = "Update Todo";
+    
+          // function editHandle (evt) {
+          //   evt.preventDefault();
+          //   console.log(edit);
+          // }
+    
+          // function handleEditChange(evt) {
+          //   const editbtn = evt.target.value;
+          //   console.log(editbtn);
+          // }
+          
+          //Event Listener for Element Edit Button
+          elementForm.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            alert('update me?');
+            let newEditText = document.getElementById("editText").value; //Gets the value from the input Id
+            console.log(newEditText);
+    
+            //Now replace the newly inputed text by user into the todo
+    
+            //1: remove the update todo text box.
+            elementForm.remove();
+    
+            //2: replace the old text with the new edit by inserted the value into the HTML DOM
+            elementDiv.textContent = newEditText;
+            elementDiv.appendChild(elementButtonDelete).textContent = "Delete" ;
+            elementDiv.appendChild(elementButtonEdit).textContent = "Edit" ;
+            
+            console.log(todoTitleList)
+    
+          })
+       
+        });
       };
     
     };
