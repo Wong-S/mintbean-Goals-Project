@@ -28,7 +28,7 @@
 <a href="https://www.linkedin.com/in/ashley-kwan08/" target="_blank">Ashley Kwan</a> <br>
 <a href="https://www.linkedin.com/in/wong-s" target="_blank">Sarah Wong</a>
 
-# Getting Started with Create React App
+## <a name="create-react-app"></a>Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
