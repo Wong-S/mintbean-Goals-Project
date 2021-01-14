@@ -416,7 +416,96 @@ function Search() {
 ///=========================================
 
 
+//NOTE: Time at 1:10AM and 12:52PM yields negative time results!!! So i prob need to factor in military time potentially for AM vs PM...
 
+function SetTime() {
+  // eslint-disable-next-line
+    const [time, setTime ] = React.useState('');
+  // eslint-disable-next-line
+    function handleTime(evt) {
+      evt.preventDefault();
+      console.log(time);
+      alert('you submitted the form');
+  
+      // Once I get the time, then make a countdown
+      function countDown() {
+        console.log(time)
+        
+        alert('This is the moment.js now time alert')
+        let nowTime = moment()
+        nowTime = moment(nowTime).format("hh:mm");
+        console.log(nowTime); //Getting current time from moment.js -> '12:35'
+        alert('This is the second alert')
+        // return console.log(time)
+  
+        //Now subtract the chosen user time from the selected time to get a total hours and min
+        let startTime = moment.duration(time, "HH:mm");
+        console.log(startTime);
+  
+        let endTime = moment.duration(nowTime, "HH:mm");
+        console.log(endTime);
+        // const endTime = moment.duration()
+        let timeDifference = endTime.subtract(startTime);
+        console.log(timeDifference); //return a dict obj
+  
+        timeDifference.hours();
+        console.log(timeDifference.hours()) //display the hours
+        console.log(typeof timeDifference.hours()) //Data type is a Number!! 
+  
+        timeDifference.minutes();
+        console.log(timeDifference.minutes()); //display the minutes
+  
+        //Now start the count down passing in the hours and minutes
+  
+        //First put the hours and minutes display on the frontend html
+        const inputTime = document.querySelector('#countdown').textContent = timeDifference.hours() + ":" + timeDifference.minutes()
+  
+        //Then get the time that we just put in the html
+        const timeCount = document.getElementById('countdown');
+  
+  
+        // countdown code starts here
+        function updateCountDown () {
+          const currentTimeNow = moment(); 
+          const formatTimeHoursMinutes = currentTimeNow.format('hh:mm');
+  
+          timeCount.textContent = formatTimeHoursMinutes;
+        }
+  
+        setInterval(updateCountDown, 1000);
+  
+  
+      }
+      countDown()
+      
+    }
+  
+    function handleTimeChange(evt) {
+      setTime(evt.target.value)
+    }
+  
+  
+    
+  
+    return (
+      <div>
+          <form onSubmit={handleTime}>
+              Start Time:
+              {/* Will accept time between 12AM to 12PM */}
+              <input value={time} onChange = {handleTimeChange} type="time" min="24:00" max="24:00"></input> 
+              
+              <button>Submit</button>
+          </form>
+  
+          <div id = "countdown"></div>
+      </div>
+  )};
+
+
+
+
+///=========================================
+///=========================================
 function App() {
   return (
     <div> 
