@@ -1,8 +1,11 @@
 //import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import React from 'react'; //I imported this in here...
 //import Moment from 'react-moment';
 import * as moment from 'moment';
+import Button from 'react-bootstrap/Button';
+
 //=======================================================
 //=======================================================
 //GLOBAL VARIABLES:
@@ -161,7 +164,7 @@ function AddTodo() {
         <form onSubmit = {handleTodo}>
             Todo:
             <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>
-            <button>Add Item</button>
+            <Button variant="outline-info">Add</Button>
             <br></br>
 
             
@@ -405,8 +408,7 @@ function Search() {
     Search:
     <input value= {search} onChange = {handleSearchChange} type="text"></input> 
     {/* onChange is event listener */}
-    <button>Search</button>
-    <br></br>
+    <Button variant="outline-info">Search</Button>
 
     
   </form>)
