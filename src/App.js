@@ -73,7 +73,7 @@ function AddTodo() {
     elementTitle.appendChild(elementTitleDeleteButton).textContent = "Delete" ;
     elementTitle.appendChild(elementTitleEditButton).textContent = "Edit" ;
     elementTitle.appendChild(elementTrackButton).textContent = "Track" ;
-    elementTitle.appendChild(elementStopTrackButton).textContent = "Done" 
+    elementTitle.appendChild(elementStopTrackButton).textContent = "Completed" 
 
     
     //Delete Event Listener
@@ -153,13 +153,14 @@ function AddTodo() {
     //Tracks the start date/time of task
     elementTrackButton.addEventListener("click", (evt) => { 
       evt.preventDefault();
-      alert('Tracking!');
+      // alert('Tracking!');
 
       //console log the current day, date, and time(hour:mins)
       let startTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
       console.log(startTime);
       // let showStart = document.getElementById("showStart")
       // console.log(showStart);
+      alert(`Starting: ${startTime}`);
       
       });
 
@@ -167,10 +168,11 @@ function AddTodo() {
     //Track the log of when a user selects done for a specific task
     elementStopTrackButton.addEventListener("click", (evt) => {
       evt.preventDefault();
-      alert("DONE!");
+      // alert("DONE!");
 
-      let doneTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
-      console.log(doneTime);
+      let completedTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
+      console.log(completedTime);
+      alert(`Completed: ${completedTime}`);
     });
 
     }
