@@ -62,6 +62,8 @@ function AddTodo() {
     let elementTitle = document.createElement("p");
     let elementTitleDeleteButton = document.createElement("button");  //Delete Button
     let elementTitleEditButton = document.createElement("button");  // Edit Button
+    let elementTrackButton = document.createElement("button"); //Start Track Button
+    let elementStopTrackButton = document.createElement("button"); //Stop Track Button
 
     document.querySelector("#todo-title").appendChild(elementTitle).textContent = todoTitle;
     
@@ -70,6 +72,9 @@ function AddTodo() {
     //NOTE: Finally, the button gets appended to EACH "p". Use the variable name, NOT "document.queryselector("p") which creates multiple "p", but duplicated buttons inside one "p" tag
     elementTitle.appendChild(elementTitleDeleteButton).textContent = "Delete" ;
     elementTitle.appendChild(elementTitleEditButton).textContent = "Edit" ;
+    elementTitle.appendChild(elementTrackButton).textContent = "Track" ;
+    elementTitle.appendChild(elementStopTrackButton).textContent = "Done" 
+
     
     //Delete Event Listener
   
@@ -77,10 +82,6 @@ function AddTodo() {
       evt.preventDefault();
       alert('Delete me');
       elementTitle.remove();
-   
-
-        // not sure why this conditional isn't working to update
-        // the todoTitleList??
 
         for( let i = 0; i < todoTitleList.length; i++){ 
     
@@ -113,7 +114,7 @@ function AddTodo() {
       elementForm.appendChild(elementInput);
       elementForm.appendChild(elementEditButton);
       
-      elementEditButton.textContent = "Update Todo";
+      elementEditButton.textContent = "Update";
 
       // function editHandle (evt) {
       //   evt.preventDefault();
@@ -144,10 +145,33 @@ function AddTodo() {
         
         console.log(todoTitleList)
 
-      })
+      });
    
     });
 
+    //Event Listener for the Element Start Button 
+    //Tracks the start date/time of task
+    elementTrackButton.addEventListener("click", (evt) => { 
+      evt.preventDefault();
+      alert('Tracking!');
+
+      //console log the current day, date, and time(hour:mins)
+      let startTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
+      console.log(startTime);
+      // let showStart = document.getElementById("showStart")
+      // console.log(showStart);
+      
+      });
+
+    //Event Listener for the Stop tracking button
+    //Track the log of when a user selects done for a specific task
+    elementStopTrackButton.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      alert("DONE!");
+
+      let doneTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
+      console.log(doneTime);
+    });
 
     }
 
@@ -166,14 +190,13 @@ function AddTodo() {
             <input value={todoTitle} onChange = {handleTodoTitleChange} type="text"></input>
             <Button variant="outline-info">Add</Button>
             <br></br>
+            
 
             
         </form>
         
         <form>
           <div id = "todo-title">
-
-          
           </div>
         </form>
 
@@ -516,6 +539,8 @@ function App() {
       <br></br>
 
       <AddTodo />
+      <br></br>
+      <SetTime />
 
       
 
