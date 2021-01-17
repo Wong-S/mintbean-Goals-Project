@@ -9,12 +9,13 @@
 - [Getting Started with Create React App](#create-react-app)
 
 ## <a name="overview"></a>Overview
+Goal tracking application to start off the new year strong! 
 
 ## <a name="tech-stack"></a>Tech Stack
 
-**Front End:** <br>
+**Front End:** Javascript, CSS, HTML<br>
 **Back End:** <br>
-**Frameworks/Libraries:** <br>
+**Frameworks/Libraries:** React, React-bootstrap, Moment.js <br>
 **APIs:**
 <br/>
 
