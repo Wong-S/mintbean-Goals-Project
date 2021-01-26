@@ -1,5 +1,4 @@
-# mintbeanHackathonGoals
-
+# Goal-Tracker
 ## Table of Contents
 
 - [Overview](#overview)
@@ -20,6 +19,7 @@ Goal tracking application to start off the new year strong!
 <br/>
 
 ## <a name="features"></a>Features
+-Add, Edit, and Delete Todo-items
 
 <br><br>
 
