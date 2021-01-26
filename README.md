@@ -1,4 +1,4 @@
-# Goal-Tracker
+# Goal-Tracker(Hackathon)
 ## Table of Contents
 
 - [Overview](#overview)
