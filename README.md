@@ -1,4 +1,5 @@
 # Goal-Tracker(Hackathon)
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -8,7 +9,8 @@
 - [Getting Started with Create React App](#create-react-app)
 
 ## <a name="overview"></a>Overview
-Goal tracking application to start off the new year strong! 
+
+Goal tracking application to start off the new year strong!
 
 ## <a name="tech-stack"></a>Tech Stack
 
@@ -19,8 +21,11 @@ Goal tracking application to start off the new year strong!
 <br/>
 
 ## <a name="features"></a>Features
+
 -Add, Edit, and Delete Todo-items
 
+<br><br>
+<img src="todoapp.png">
 <br><br>
 
 ## <a name="developer"></a>About the Developers <br>
