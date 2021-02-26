@@ -25,7 +25,8 @@ Goal tracking application to start off the new year strong!
 -Add, Edit, and Delete Todo-items
 
 <br><br>
-<img src="todoapp.png">
+
+<img id="gt-todo" src="https://media.giphy.com/media/vt5n3BjIIdwxnbKbd7/giphy.gif" alt="gif-video">
 <br><br>
 
 ## <a name="developer"></a>About the Developers <br>
